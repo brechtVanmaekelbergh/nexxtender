@@ -1066,23 +1066,7 @@ select:
             id(g_${generic_data_id_prefix}_charge_mode) = value_int;
             id(script_send_config_old).execute();
           }
-
-binary_sensor:
-  - platform: gpio
-    pin:
-      number: GPIO00
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    name: ${prefix_binary_sensor}Toggle charger mode
-    internal: true
-    on_release:
-      then:
-        - lambda: |-
-            ESP_LOGD("Boot switch", "Released");
-            id(switch_charger_mode).execute();
-
+          
 # Services in API
 api:
   services:
